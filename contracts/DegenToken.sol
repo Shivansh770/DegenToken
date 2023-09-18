@@ -18,12 +18,13 @@ contract Degen is ERC20, ERC20Burnable, Ownable {
     }
 
     function GetBalance() external view returns (uint256) { 
-            return this.balanceOf(msg.sender);
+        return this.balanceOf(msg.sender);
     }
 
     function TransferTokens(address receiver, uint256 _value) external { 
         require(balanceOf(msg.sender) >= _value, "You do not have enough Degen Tokens"); 
-        approve(msg.sender, _value); transferFrom(msg.sender, receiver, _value);
+        approve(msg.sender, _value); 
+        transferFrom(msg.sender, receiver, _value);
     }
     function BurnSomeTokens (uint256 _value) public view{ 
         require(balanceOf(msg.sender) >= _value, "You do not have enough Degen Tokens");
